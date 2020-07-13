@@ -1,3 +1,50 @@
 body {
-  background-color: #c1816c;
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 600px;
+    background-color: gold;
+    border: 1px solid #1419b3;
+    padding: 10px;
+    .area-inputValue-result {
+      display: flex;
+      flex-direction: column;
+      height: 250px;
+      box-sizing: border-box;
+      background-color: #12d493;
+      padding: 10px;
+
+      .visual-inputValue {
+
+        box-sizing: border-box;
+        height: 60%;
+       font-size: 24px;
+        outline: 0;
+        border: none;
+        background-color: transparent;
+
+      }
+      .area-result {
+
+        height: 40%;
+        font-size: 24px;
+      }
+    }
+    .area-input-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+      grid-gap: 10px;
+      padding: 10px;
+      .btn {
+        border-radius: 50%;
+        padding: 20px;
+        background-color: aliceblue;
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+  }
 }
