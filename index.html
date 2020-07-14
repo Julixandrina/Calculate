@@ -11,36 +11,38 @@
 <div class="container">
     <div class="area-inputValue-result">
         <input class="visual-inputValue" type="tel" value="">
-        <div class="area-result">=<span class="result">0</span></div>
+        <div class="area-result"><svg width="25px" viewBox="0 0 44 44" class="svg-equal">
+            <path  fill="#9ab3cc" d="M5.941 20h32.117C41.335 20 44 17.309 44 14s-2.665-6-5.941-6H5.941C2.665 8 0 10.691 0 14s2.665 6 5.941 6zm0-10h32.117C40.195 10 42 11.832 42 14s-1.805 4-3.941 4H5.941C3.805 18 2 16.168 2 14s1.805-4 3.941-4zM38.059 24H5.941C2.665 24 0 26.691 0 30s2.665 6 5.941 6h32.117C41.335 36 44 33.309 44 30s-2.665-6-5.941-6zm0 10H5.941C3.805 34 2 32.168 2 30s1.805-4 3.941-4h32.117C40.195 26 42 27.832 42 30s-1.805 4-3.941 4z"/>
+        </svg><span class="result"></span></div>
     </div>
 
-    <div class="area-input-buttons">
-        <div class="btn">C</div>
-        <div class="btn">+/-</div>
-        <div class="btn">%</div>
-        <div class="btn"><span>/</span></div>
+    <div class="area-buttons">
+        <input type="button" class="btn top-style" value="C">
+        <input type="button" class="btn top-style" value="( )">
+        <input type="button" class="btn val top-style" value="%">
+        <input type="button" class="btn val right-style" value="/">
 
-        <div class="btn">7</div>
-        <div class="btn">8</div>
-        <div class="btn">9</div>
-        <div class="btn">*</div>
+        <input type="button" class="btn val" value="7">
+        <input type="button" class="btn val" value="8">
+        <input type="button" class="btn val" value="9">
+        <input type="button" class="btn val right-style" value="*">
 
-        <div class="btn">4</div>
-        <div class="btn">5</div>
-        <div class="btn">6</div>
-        <div class="btn">+</div>
+        <input type="button" class="btn val" value="4">
+        <input type="button" class="btn val" value="5">
+        <input type="button" class="btn val" value="6">
+        <input type="button" class="btn val right-style" value="+">
 
-        <div class="btn">1</div>
-        <div class="btn">2</div>
-        <div class="btn">3</div>
-        <div class="btn">-</div>
+        <input type="button" class="btn val" value="1">
+        <input type="button" class="btn val" value="2">
+        <input type="button" class="btn val" value="3">
+        <input type="button" class="btn val right-style" value="-">
 
-        <div class="btn">=</div>
-        <div class="btn">.</div>
-        <div class="btn">0</div>
-        <div class="btn">( )</div>
+        <input type="button" class="btn calcAction grid-item-equal" value="=">
+        <input type="button" class="btn val" value="0">
+        <input type="button" class="btn val right-style" value=",">
+        <!--<input type="button" class="btn right-style" value="( )">-->
 
-    </div>
+
 </div>
 <script src="main.js"></script>
 <script src="math.min.js"></script>

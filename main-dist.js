@@ -1,1 +1,1 @@
-"use strict";
+"use strict";let inputValueForCalc=document.querySelector(".visual-inputValue"),result=document.querySelector(".result");function getEnteredValue(e){let t=e.target.value;console.log(t),calc(t)}function calc(e){outputResult(math.evaluate(e))}function outputResult(e){result.innerHTML=e}result.innerHTM="",inputValueForCalc.addEventListener("change",(function(e){getEnteredValue(e)}));

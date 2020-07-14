@@ -2,18 +2,18 @@ body {
   .container {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 350px;
     height: 600px;
-    background-color: gold;
-    border: 1px solid #1419b3;
-    padding: 10px;
+    background-color: #465e76;
+    border-radius: 10px;
     .area-inputValue-result {
       display: flex;
       flex-direction: column;
-      height: 250px;
+      height: 40%;
       box-sizing: border-box;
-      background-color: #12d493;
-      padding: 10px;
+      background-color: #465e76;
+      margin: 10px 0;
+      padding: 0 10px;
 
       .visual-inputValue {
 
@@ -22,27 +22,53 @@ body {
        font-size: 24px;
         outline: 0;
         border: none;
-        background-color: transparent;
+        background-color: #6b7e91;
+        border-radius: 10px;
+        padding: 5px;
 
       }
       .area-result {
 
         height: 40%;
-        font-size: 24px;
+        display: flex;
+        align-items: center;
+        color: white;
+        font-size: 32px;
+        line-height: 27px;
+        .svg-equal {
+          margin-right: 5px;
+
+        }
       }
     }
-    .area-input-buttons {
+    .area-buttons {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
       grid-gap: 10px;
       padding: 10px;
       .btn {
-        border-radius: 50%;
+        border-radius: 10px;
         padding: 20px;
-        background-color: aliceblue;
         display: flex;
         justify-content: center;
+        box-sizing: border-box;
+        border-color: transparent;
+        background-color: #6b7e91;
+        color: white;
+        font-size: 20px;
+        &.top-style {
+          background-color: #9ab3cc;
+        }
+        &.right-style {
+          background-color: #91d9cc;
+        }
+        &.grid-item-equal {
+          grid-row-start: 5;
+          grid-row-end: 6;
+          grid-column-start: 1;
+          grid-column-end: 3;
+        }
       }
     }
 
