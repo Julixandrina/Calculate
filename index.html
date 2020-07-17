@@ -11,15 +11,23 @@
 <div class="container">
     <div class="area-inputValue-result">
         <input class="visual-inputValue" type="tel" value="">
-        <div class="area-result"><svg width="25px" viewBox="0 0 44 44" class="svg-equal">
-            <path  fill="#9ab3cc" d="M5.941 20h32.117C41.335 20 44 17.309 44 14s-2.665-6-5.941-6H5.941C2.665 8 0 10.691 0 14s2.665 6 5.941 6zm0-10h32.117C40.195 10 42 11.832 42 14s-1.805 4-3.941 4H5.941C3.805 18 2 16.168 2 14s1.805-4 3.941-4zM38.059 24H5.941C2.665 24 0 26.691 0 30s2.665 6 5.941 6h32.117C41.335 36 44 33.309 44 30s-2.665-6-5.941-6zm0 10H5.941C3.805 34 2 32.168 2 30s1.805-4 3.941-4h32.117C40.195 26 42 27.832 42 30s-1.805 4-3.941 4z"/>
-        </svg><span class="result"></span></div>
+        <div class="area-result">
+            <svg width="25px" viewBox="0 0 44 44" class="svg-equal">
+                <path fill="#9ab3cc"
+                      d="M5.941 20h32.117C41.335 20 44 17.309 44 14s-2.665-6-5.941-6H5.941C2.665 8 0 10.691 0 14s2.665 6 5.941 6zm0-10h32.117C40.195 10 42 11.832 42 14s-1.805 4-3.941 4H5.941C3.805 18 2 16.168 2 14s1.805-4 3.941-4zM38.059 24H5.941C2.665 24 0 26.691 0 30s2.665 6 5.941 6h32.117C41.335 36 44 33.309 44 30s-2.665-6-5.941-6zm0 10H5.941C3.805 34 2 32.168 2 30s1.805-4 3.941-4h32.117C40.195 26 42 27.832 42 30s-1.805 4-3.941 4z"/>
+            </svg>
+            <span class="result"></span></div>
     </div>
 
     <div class="area-buttons">
         <button type="button" class="btn resetValue top-style">C</button>
-        <button type="button" class="btn top-style">( )</button>
-        <button type="button" class="btn  top-style del">X</button>
+        <button type="button" class="btn bracket top-style">( )</button>
+        <button type="button" class="btn  top-style del">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 3H7C6.31 3 5.77 3.35 5.41 3.88L0 12L5.41 20.11C5.77 20.64 6.31 21 7 21H22C23.1 21 24 20.1 24 19V5C24 3.9 23.1 3 22 3ZM22 19H7.07L2.4 12L7.06 5H22V19ZM10.41 17L14 13.41L17.59 17L19 15.59L15.41 12L19 8.41L17.59 7L14 10.59L10.41 7L9 8.41L12.59 12L9 15.59L10.41 17Z"
+                      fill="white"/>
+            </svg>
+        </button>
         <button type="button" class="btn val right-style">/</button>
 
         <button type="button" class="btn val">7</button>
@@ -38,15 +46,14 @@
         <button type="button" class="btn val right-style">-</button>
 
         <button type="button" class="btn calcAction grid-item-equal">=</button>
-        <button type="button" class="btn val" >0</button>
+        <button type="button" class="btn val">0</button>
         <button type="button" class="btn val right-style">.</button>
         <!--<input type="button" class="btn right-style" value="( )">-->
 
-
+    </div>
 </div>
 <script src="main.js"></script>
 <script src="math.min.js"></script>
-
 
 
 </body>
