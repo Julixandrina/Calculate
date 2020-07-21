@@ -1,12 +1,12 @@
 'use strict';
-// math.evaluate('1.2 * (2 + 4.5)')
 
-let inputValueForCalc = document.querySelector('.visual-inputValue');//инпут в который попадают значения для рассчёта
 
-inputValueForCalc.addEventListener('keydown', function (event) {
+let inputEnteredSignsNumbers = document.querySelector('.areaSignsNumbers');//инпут в который попадают значения для рассчёта
+inputEnteredSignsNumbers.focus();
+inputEnteredSignsNumbers.addEventListener('keydown', function (event) {
 
     if (event.key === 'Enter') {
-        calc(inputValueForCalc.value);
+        calcMathExpression(inputEnteredSignsNumbers.value);
     }
 })
 
@@ -14,43 +14,42 @@ let result = document.querySelector('.result');//отображение резу
 result.innerHTM = '';
 
 //функция отслеживания изменений в инпуте для ввода значений
-inputValueForCalc.addEventListener('change', function (event) {
+inputEnteredSignsNumbers.addEventListener('change', function (event) {
     getEnteredValue(event);
 })
 
 //функция которая берёт полученную строку и передаёт её в функцию для рассчёта выражения
 function getEnteredValue(event) {
     let target = event.target;
-    let entriesValues = target.value;
-    calc(entriesValues);
+    let enteredValues = target.value;
+    calcMathExpression(enteredValues);
 }
-
 
 let areaButtons = document.querySelector('.area-buttons');
 areaButtons.addEventListener('click', function (event) {
     let target = event.target;
-    if (target !== target.closest('.val')) {
+    if (target !== target.closest('.symbolInner')) {
 
-        if (target.matches('.calcAction')) {
-            calc(inputValueForCalc.value);
+        if (target.matches('.calcResult')) {
+            calcMathExpression(inputEnteredSignsNumbers.value);
         }
         if (target.matches('.resetValue')) {
-            inputValueForCalc.value = '';
+            inputEnteredSignsNumbers.value = '';
             result.innerHTML = '';
-            inputValueForCalc.focus();
+            inputEnteredSignsNumbers.focus();
         }
-        if (target.matches('.del')) {
-            let upgradeVal = inputValueForCalc.value;
-            inputValueForCalc.value = inputValueForCalc.value.substring(0, upgradeVal.length - 1)
+        if (target.matches('.deleteSymbol') || target.closest('.deleteSymbol')) {
+            let currentSignsNumbers = inputEnteredSignsNumbers.value;
+            inputEnteredSignsNumbers.value = inputEnteredSignsNumbers.value.substring(0, currentSignsNumbers.length - 1)
             result.innerHTML = '';
-            inputValueForCalc.focus();
+            inputEnteredSignsNumbers.focus();
         }
         if (target.matches('.brackets')) {
-            let currentStr = inputValueForCalc.value;
+            let currentSignsNumbers = inputEnteredSignsNumbers.value;
             let numBracketOpen = 0;
             let numBracketClose = 0;
 
-            for (let char of currentStr) {
+            for (let char of currentSignsNumbers) {
 
                 if (char.codePointAt(0) === 40) {
                     numBracketOpen++;
@@ -60,48 +59,43 @@ areaButtons.addEventListener('click', function (event) {
                 }
             }
             if (numBracketOpen > numBracketClose) {
-                inputValueForCalc.value = currentStr + String.fromCodePoint(41);
+                inputEnteredSignsNumbers.value = currentSignsNumbers + String.fromCodePoint(41);
+                inputEnteredSignsNumbers.focus();
             } else
-                inputValueForCalc.value = currentStr + String.fromCodePoint(40);
+                inputEnteredSignsNumbers.value = currentSignsNumbers + String.fromCodePoint(40);
+                inputEnteredSignsNumbers.focus();
         }
         return;
     }
 
+    let valueOnClick = target.innerHTML;
 
+    let currentValue = inputEnteredSignsNumbers.value;
 
-    let clickValue = target.innerHTML;
+    let resultGluingValues = currentValue + valueOnClick;
 
-    let currentValue = inputValueForCalc.value;
-
-    let gluing = currentValue + clickValue;
-
-    inputValueForCalc.value = gluing;
-    inputValueForCalc.focus();
+    inputEnteredSignsNumbers.value = resultGluingValues;
+    inputEnteredSignsNumbers.focus();
 
 })
 
-//функция для рассчёта выражения
-function calc(val) {
-    if (val) {
+//функция для рассчёта математического выражения
+function calcMathExpression(stringWithEnteredSignsNumbers) {
+    if (stringWithEnteredSignsNumbers) {
         try {
-            let expresionForCalc = math.evaluate(val);
-            outputResult(expresionForCalc);
-            inputValueForCalc.focus();
+            let resultValueBeforeMathCalc = math.evaluate(stringWithEnteredSignsNumbers);
+            outputResult(resultValueBeforeMathCalc);
+            inputEnteredSignsNumbers.focus();
 
         } catch {
 
-            inputValueForCalc.focus();
+            inputEnteredSignsNumbers.focus();
 
-            /*let newValue = 'недопустимое выражение';*/
-
-            /*outputResult(newValue)*/
             setTimeout(() => {
-
                 result.innerHTML = '';
-                inputValueForCalc.focus();
-            }, 1500)
+                inputEnteredSignsNumbers.focus();
+            }, 1500);
         }
-
     }
 
 //функция присваивания и вывода результата вычислений
