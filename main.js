@@ -1,51 +1,46 @@
 'use strict';
 
+//инпут в который попадают значения для рассчёта
+let inputEnteredSymbols = document.querySelector('.areaSymbols');
 
-let inputEnteredSignsNumbers = document.querySelector('.areaSignsNumbers');//инпут в который попадают значения для рассчёта
-inputEnteredSignsNumbers.focus();
-inputEnteredSignsNumbers.addEventListener('keydown', function (event) {
+let areaButtons = document.querySelector('.areaButtons');
 
+//отображение результата
+let result = document.querySelector('.result');
+
+inputEnteredSymbols.focus();
+
+inputEnteredSymbols.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
-        calcMathExpression(inputEnteredSignsNumbers.value);
+        calcMathExpression(inputEnteredSymbols.value);
     }
-})
-
-let result = document.querySelector('.result');//отображение результата
-result.innerHTM = '';
+});
 
 //функция отслеживания изменений в инпуте для ввода значений
-inputEnteredSignsNumbers.addEventListener('change', function (event) {
+inputEnteredSymbols.addEventListener('change', function (event) {
     getEnteredValue(event);
-})
+});
 
-//функция которая берёт полученную строку и передаёт её в функцию для рассчёта выражения
-function getEnteredValue(event) {
-    let target = event.target;
-    let enteredValues = target.value;
-    calcMathExpression(enteredValues);
-}
-
-let areaButtons = document.querySelector('.area-buttons');
 areaButtons.addEventListener('click', function (event) {
     let target = event.target;
     if (target !== target.closest('.symbolInner')) {
 
         if (target.matches('.calcResult')) {
-            calcMathExpression(inputEnteredSignsNumbers.value);
+            calcMathExpression(inputEnteredSymbols.value);
         }
         if (target.matches('.resetValue')) {
-            inputEnteredSignsNumbers.value = '';
+            inputEnteredSymbols.value = '';
             result.innerHTML = '';
-            inputEnteredSignsNumbers.focus();
+            inputEnteredSymbols.focus();
         }
         if (target.matches('.deleteSymbol') || target.closest('.deleteSymbol')) {
-            let currentSignsNumbers = inputEnteredSignsNumbers.value;
-            inputEnteredSignsNumbers.value = inputEnteredSignsNumbers.value.substring(0, currentSignsNumbers.length - 1)
+            let currentSignsNumbers = inputEnteredSymbols.value;
+            inputEnteredSymbols.value = inputEnteredSymbols.value.substring(0, currentSignsNumbers.length - 1)
             result.innerHTML = '';
-            inputEnteredSignsNumbers.focus();
+            inputEnteredSymbols.focus();
         }
         if (target.matches('.brackets')) {
-            let currentSignsNumbers = inputEnteredSignsNumbers.value;
+            let currentSignsNumbers = inputEnteredSymbols.value;
             let numBracketOpen = 0;
             let numBracketClose = 0;
 
@@ -59,25 +54,25 @@ areaButtons.addEventListener('click', function (event) {
                 }
             }
             if (numBracketOpen > numBracketClose) {
-                inputEnteredSignsNumbers.value = currentSignsNumbers + String.fromCodePoint(41);
-                inputEnteredSignsNumbers.focus();
+                inputEnteredSymbols.value = currentSignsNumbers + String.fromCodePoint(41);
+                inputEnteredSymbols.focus();
             } else
-                inputEnteredSignsNumbers.value = currentSignsNumbers + String.fromCodePoint(40);
-                inputEnteredSignsNumbers.focus();
+                inputEnteredSymbols.value = currentSignsNumbers + String.fromCodePoint(40);
+            inputEnteredSymbols.focus();
         }
         return;
     }
 
     let valueOnClick = target.innerHTML;
 
-    let currentValue = inputEnteredSignsNumbers.value;
+    let currentValue = inputEnteredSymbols.value;
 
     let resultGluingValues = currentValue + valueOnClick;
 
-    inputEnteredSignsNumbers.value = resultGluingValues;
-    inputEnteredSignsNumbers.focus();
+    inputEnteredSymbols.value = resultGluingValues;
+    inputEnteredSymbols.focus();
 
-})
+});
 
 //функция для рассчёта математического выражения
 function calcMathExpression(stringWithEnteredSignsNumbers) {
@@ -85,24 +80,29 @@ function calcMathExpression(stringWithEnteredSignsNumbers) {
         try {
             let resultValueBeforeMathCalc = math.evaluate(stringWithEnteredSignsNumbers);
             outputResult(resultValueBeforeMathCalc);
-            inputEnteredSignsNumbers.focus();
+            inputEnteredSymbols.focus();
 
         } catch {
 
-            inputEnteredSignsNumbers.focus();
+            inputEnteredSymbols.focus();
 
             setTimeout(() => {
                 result.innerHTML = '';
-                inputEnteredSignsNumbers.focus();
+                inputEnteredSymbols.focus();
             }, 1500);
         }
     }
 
 //функция присваивания и вывода результата вычислений
-function outputResult(resultCalc) {
-    result.innerHTML = resultCalc;
-}
+    function outputResult(resultCalc) {
+        result.innerHTML = resultCalc;
+    }
 }
 
-
+//функция которая берёт полученную строку и передаёт её в функцию для рассчёта выражения
+function getEnteredValue(event) {
+    let target = event.target;
+    let enteredValues = target.value;
+    calcMathExpression(enteredValues);
+}
 
